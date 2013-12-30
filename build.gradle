@@ -1,0 +1,66 @@
+defaultTasks 'build'
+
+allprojects {
+	apply plugin: 'idea';
+    	sourceCompatibility = 1.6
+}
+
+subprojects {
+	apply plugin: 'java'
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		testCompile 'junit:junit:4.10'
+        testCompile 'pl.pragmatists:JUnitParams:1.0.2'
+		testCompile 'org.testng:testng:6.8'
+		testCompile 'org.mockito:mockito-all:1.9.0'
+		testCompile 'org.hamcrest:hamcrest-all:1.3'
+  		testCompile 'org.assertj:assertj-core:1.5.0'
+       	testCompile 'com.googlecode.catch-exception:catch-exception:1.0.4'
+	}
+
+	idea {
+		module.downloadSources = true;
+	}
+}
+
+project(':printwriter') {
+    dependencies {
+        compile 'org.glassfish:javax.servlet:3.0'
+        compile 'org.springframework:spring-web:3.0.0.RELEASE'
+    }
+}
+
+project('self_test') {
+    dependencies {
+        compile 'com.google.guava:guava:15.0'
+    }
+}
+
+project(':verify_never') {
+    dependencies {
+        compile 'org.glassfish:javax.servlet:3.0'
+    }
+}
+
+project(':mocking_container') {
+    dependencies {
+        compile 'org.springframework:spring-webmvc:4.0.0.RELEASE'
+    }
+}
+
+project(':test_behaviour') {
+    dependencies {
+        compile 'org.glassfish:javax.servlet:3.0'
+        compile 'org.springframework:spring-webmvc:4.0.0.RELEASE'
+    }
+}
+
+project(':creation_of_objects') {
+    dependencies {
+        compile 'joda-time:joda-time:2.3'
+    }
+}
